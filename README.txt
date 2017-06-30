@@ -1,0 +1,1 @@
+This repository contains all the code I used on the [CodeInGame](https://www.codingame.com/profile/2c25de3b333feac5025958b9ee809aa74240581) site.
