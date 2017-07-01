@@ -1,34 +1,32 @@
 #include <iostream>
+#include <limits>
 #include <string>
-#include <vector>
-#include <algorithm>
 
 using namespace std;
 
-/**
- * CodinGame planet is being attacked by slimy insectoid aliens.
- * <---
- * Hint:To protect the planet, you can implement the pseudo-code provided in the statement, below the player.
- **/
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpadded"
+struct Enemy
+{
+    std::string name{""};
+    int distance{std::numeric_limits<int>::min()};
+};
+#pragma GCC diagnostic pop
+
+inline Enemy closestEnemy(const Enemy& firstEnemy, const Enemy& secondEnemy)
+{
+    return firstEnemy.distance < secondEnemy.distance ? firstEnemy : secondEnemy;
+}
+
 int main()
 {
-
-    // game loop
+    Enemy myFirstEnemy, mySecondEnemy;
     while (1) {
-        string enemy1; // name of enemy 1
-        cin >> enemy1; cin.ignore();
-        int dist1; // distance to enemy 1
-        cin >> dist1; cin.ignore();
-        string enemy2; // name of enemy 2
-        cin >> enemy2; cin.ignore();
-        int dist2; // distance to enemy 2
-        cin >> dist2; cin.ignore();
+        cin >> myFirstEnemy.name; cin.ignore();
+        cin >> myFirstEnemy.distance; cin.ignore();
+        cin >> mySecondEnemy.name; cin.ignore();
+        cin >> mySecondEnemy.distance; cin.ignore();
 
-        // Write an action using cout. DON'T FORGET THE "<< endl"
-        // To debug: cerr << "Debug messages..." << endl;
-
-
-        // You have to output a correct ship name to shoot ("Buzz", enemy1, enemy2, ...)
-        cout << "name of the enemy" << endl;
+        cout << closestEnemy(myFirstEnemy, mySecondEnemy).name << endl;
     }
 }
