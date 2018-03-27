@@ -4,14 +4,18 @@
 
 using namespace std;
 
+#ifdef __clang__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpadded"
+#endif
 struct Enemy
 {
     std::string name{""};
     int distance{std::numeric_limits<int>::min()};
 };
+#ifdef __clang__
 #pragma GCC diagnostic pop
+#endif
 
 inline Enemy closestEnemy(const Enemy& firstEnemy, const Enemy& secondEnemy)
 {

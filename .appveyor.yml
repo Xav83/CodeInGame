@@ -1,0 +1,15 @@
+branches:
+  only:
+    - master
+
+skip_tags: true
+
+clone_depth: 50
+
+build_script:
+  - set PATH=%PATH%;C:\msys64\usr\bin\ # Adds msys64 binaries to the binary search PATHs.
+
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cmake --build .
