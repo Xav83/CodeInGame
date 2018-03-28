@@ -10,11 +10,7 @@ env:
     - CI_VERBOSE=0
 
 script:
-  - set -e
-
   - mkdir build
   - cd build
   - cmake ..
   - cmake --build .
-
-  - set +e
