@@ -13,11 +13,9 @@ int main()
     auto N{5};
     cin >> N; cin.ignore();
     std::vector<int> strengths(N);
-    cout << N << "==" << strengths.size() << endl;
     for (auto& strenght : strengths)
     {
         cin >> strenght; cin.ignore();
-        cout << "Strengh " << strenght << endl;
     }
     
     std::sort(strengths.begin(), strengths.end());
