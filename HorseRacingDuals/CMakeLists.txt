@@ -20,16 +20,24 @@ add_executable(horseRacingDuals ${SOURCES})
 
 enable_testing()
 
-if (BASH)
-	add_test(
-		NAME simpleTestCase
-		COMMAND sh -c "$<TARGET_FILE:horseRacingDuals> ${CMAKE_CURRENT_SOURCE_DIR}/tst/simpleTestCaseInput.txt"
-		CONFIGURATIONS ${CMAKE_BUILD_TYPE}
-	)
-else()
-	add_test(
-		NAME simpleTestCase
-		COMMAND ${CMAKE_COMMAND} -E chdir $<TARGET_FILE:horseRacingDuals> $ENV{ComSpec} /c "$<TARGET_FILE:horseRacingDuals> < ${CMAKE_CURRENT_SOURCE_DIR}/tst/simpleTestCaseInput.txt"
-		CONFIGURATIONS ${CMAKE_BUILD_TYPE}
-	)
-endif()
+file (GLOB TEST_INPUTS ${CMAKE_CURRENT_SOURCE_DIR}/tst/*.txt)
+set (index 0)
+
+foreach (_input_file ${TEST_INPUTS})
+	MATH(EXPR index "${index}+1")
+	if (APPLE)
+		add_test(
+			NAME test_${index}
+			COMMAND sh -c "$<TARGET_FILE:horseRacingDuals> < ${_input_file}"
+			CONFIGURATIONS ${CMAKE_BUILD_TYPE}
+		)
+	elseif(WIN32)
+		add_test(
+			NAME test_${index}
+			COMMAND ${CMAKE_COMMAND} -E chdir $<TARGET_FILE:horseRacingDuals> $ENV{ComSpec} /c "$<TARGET_FILE:horseRacingDuals> < ${_input_file}"
+			CONFIGURATIONS ${CMAKE_BUILD_TYPE}
+		)
+    else()
+        message(FATAL_ERROR "Unknown shell command for ${CMAKE_HOST_SYSTEM_NAME}")
+	endif()
+endforeach()
