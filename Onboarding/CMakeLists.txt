@@ -1,3 +1,5 @@
+project(CodeInGame_Onboarding)
+
 set(CMAKE_CXX_STANDARD 11)
 
 if (MSVC)
@@ -8,6 +10,7 @@ if (Clang)
 	set(CMAKE_CXX_FLAGS "-Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic")
 endif()
 
+MESSAGE(STATUS "PROJECT NAME: " ${PROJECT_NAME} )
 MESSAGE(STATUS "CMAKE_CXX_COMPILER_ID: " ${CMAKE_CXX_COMPILER_ID} )
 MESSAGE(STATUS "CMAKE_CXX_COMPILER_VERSION: " ${CMAKE_CXX_COMPILER_VERSION} )
 
