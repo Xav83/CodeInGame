@@ -21,19 +21,18 @@ add_executable(horseRacingDuals ${SOURCES})
 enable_testing()
 
 file (GLOB TEST_INPUTS ${CMAKE_CURRENT_SOURCE_DIR}/tst/*.txt)
-set (index 0)
 
 foreach (_input_file ${TEST_INPUTS})
-	MATH(EXPR index "${index}+1")
+	get_filename_component(testName ${_input_file} NAME_WE)
 	if (APPLE)
 		add_test(
-			NAME test_${index}
+			NAME ${testName}
 			COMMAND sh -c "$<TARGET_FILE:horseRacingDuals> < ${_input_file}"
 			CONFIGURATIONS ${CMAKE_BUILD_TYPE}
 		)
 	elseif(WIN32)
 		add_test(
-			NAME test_${index}
+			NAME ${testName}
 			COMMAND ${CMAKE_COMMAND} -E chdir $<TARGET_FILE:horseRacingDuals> $ENV{ComSpec} /c "$<TARGET_FILE:horseRacingDuals> < ${_input_file}"
 			CONFIGURATIONS ${CMAKE_BUILD_TYPE}
 		)
