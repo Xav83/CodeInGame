@@ -2,20 +2,14 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
-
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
 int main()
 {
     auto N{5};
-    cin >> N; cin.ignore();
+    std::cin >> N; std::cin.ignore();
     std::vector<int> strengths(N);
     for (auto& strenght : strengths)
     {
-        cin >> strenght; cin.ignore();
+        std::cin >> strenght; std::cin.ignore();
     }
     
     std::sort(strengths.begin(), strengths.end());
@@ -28,6 +22,6 @@ int main()
             min = diff;
         }
     }
-    cout << min << endl;
+    std::cout << min << std::endl;
     return 0;
 }
