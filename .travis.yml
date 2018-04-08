@@ -9,6 +9,9 @@ env:
   global:
     - CI_VERBOSE=0
 
+install:
+  - brew install lcov
+
 script:
   - mkdir build
   - cd build
@@ -17,3 +20,7 @@ script:
   - cmake --build .
   - ctest -C Debug
   - set +e
+
+after_success:
+  - cd ${TRAVIS_BUILD_DIR}/build
+  - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
