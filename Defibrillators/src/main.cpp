@@ -1,9 +1,8 @@
 #include <iostream>
-#include <string>
 #include <vector>
 #include <algorithm>
 #include <sstream>
-#include <iterator>
+#include <cmath>
 
 using namespace std;
 
