@@ -34,10 +34,10 @@ int main()
     std::replace(LAT.begin(), LAT.end(), ',', '.');
     Position user {std::stod(LON), stod(LAT)};
 
-    int N;
+    auto N = 0;
     std::cin >> N; std::cin.ignore();
     Defibrilator closest {"NONE", std::numeric_limits<double>::max(), std::numeric_limits<double>::max()};
-    for (int i = 0; i < N; i++) {
+    for (auto i = 0; i < N; i++) {
         std::string DEFIB;
         std::getline(std::cin, DEFIB);
 
