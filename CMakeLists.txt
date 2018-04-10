@@ -10,6 +10,7 @@ endif(APPLE)
 
 add_subdirectory(Onboarding)
 add_subdirectory(HorseRacingDuals)
+add_subdirectory(Defibrillators)
 
 set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CMAKE_COMMAND} -E time")
 
