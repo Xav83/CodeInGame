@@ -45,6 +45,10 @@ int main()
         std::stringstream ss_DEFIB(DEFIB);
         std::string token;
         while(std::getline(ss_DEFIB, token, ';')) { splited_DEFIB.push_back(token); }
+        if(splited_DEFIB.size() != 6)
+        {
+            continue;
+        }
         std::replace(splited_DEFIB[splited_DEFIB.size()-2].begin(), splited_DEFIB[splited_DEFIB.size()-2].end(), ',', '.');
         std::replace(splited_DEFIB[splited_DEFIB.size()-1].begin(), splited_DEFIB[splited_DEFIB.size()-1].end(), ',', '.');
         const auto& next_DEFIB = Defibrilator {splited_DEFIB[1], {stod(splited_DEFIB[splited_DEFIB.size()-2]), stod(splited_DEFIB[splited_DEFIB.size()-1])}};
